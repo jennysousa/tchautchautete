@@ -1,26 +1,207 @@
 @import "tailwindcss";
 
+/* Tokens da página Amamente Sem Dor (contexto/identidade-visual.md) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #aeb94f;
+  --primary-arrow: #c6d83b;
+  --accent-1: #efa987;
+  --accent-2: #cfb2f6;
+  --dark: #74608e;
+  --ink: #313131;
+  --muted: #737373;
+  --bg: #fffdfa;
+  --bg-alt: #fbf7f0;
+  --line: #e7e5e0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-arrow: var(--primary-arrow);
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-dark: var(--dark);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-line: var(--line);
+  --font-sans: var(--font-dm-sans), sans-serif;
+  --font-display: var(--font-dm-serif), Georgia, serif;
+  --radius-card: 19px;
+  --radius-pill: 57px;
+  --radius-img: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-dm-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.display {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.container-lp {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.section-lp {
+  padding-block: 56px;
+}
+
+@media (min-width: 768px) {
+  .section-lp {
+    padding-block: 85px;
+  }
+}
+
+/* Botão CTA em pílula */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 54px;
+  padding: 0 10px 0 28px;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 22px -10px rgba(116, 96, 142, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -12px rgba(116, 96, 142, 0.55);
+}
+
+.cta:active {
+  transform: translateY(0);
+}
+
+.cta:focus-visible {
+  outline: 3px solid var(--dark);
+  outline-offset: 3px;
+}
+
+.cta .cta-arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--primary-arrow);
+  transition: transform 0.25s ease;
+}
+
+.cta:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Animações de entrada. Só ficam ocultas depois que o JS arma o elemento. */
+.reveal {
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.reveal-armed {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal.reveal-armed.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+details[open] .faq-body {
+  animation: fade-down 0.3s ease;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details .faq-chevron {
+  transition: transform 0.25s ease;
+}
+
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal.reveal-armed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .float-soft,
+  details[open] .faq-body {
+    animation: none;
+  }
+  .cta,
+  .cta .cta-arrow {
+    transition: none;
+  }
 }
