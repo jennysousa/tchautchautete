@@ -566,11 +566,13 @@ export default function Home() {
         <div className="container-lp">
           <Reveal>
             <div className="grid items-center gap-8 rounded-[19px] bg-bg-alt px-6 py-10 md:grid-cols-[0.9fr_1.1fr] md:gap-12 md:px-14 md:py-14">
-              <div className="mx-auto w-full max-w-[380px] overflow-hidden rounded-[19px] bg-[#fdeaf3]">
+              <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-[19px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={asset("/img/mae-bebe.jpg")}
-                  alt="Mãe sorrindo enquanto amamenta o bebê no colo"
+                  src={asset("/img/amamentacao.jpg")}
+                  alt="Mãe amamentando o bebê no colo, em um momento tranquilo"
+                  width={700}
+                  height={524}
                   loading="lazy"
                   className="h-auto w-full"
                 />
