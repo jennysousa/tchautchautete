@@ -66,8 +66,9 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [`${BASE}/img/og.jpg`],
   },
-  // Mantém fora do Google enquanto a página está em teste contra a atual.
-  robots: { index: false, follow: false },
+  // Página aberta para o Google. O endereço oficial evita conteúdo duplicado se houver outras cópias.
+  robots: { index: true, follow: true },
+  alternates: { canonical: `${BASE}/` },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
