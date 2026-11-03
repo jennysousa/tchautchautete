@@ -10,13 +10,24 @@ export function Carousel({ items }: { items: Item[] }) {
   const [index, setIndex] = useState(0);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  // Pausa o avanço automático enquanto a pessoa interage ou o carrossel está fora da tela.
+  const [interacting, setInteracting] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const paused = interacting || !visible;
 
+  // No celular o slide fica centralizado. Do sm para cima, alinhado ao início.
   const goTo = (i: number) => {
     const track = trackRef.current;
     if (!track) return;
     const slide = track.children[i] as HTMLElement | undefined;
     if (!slide) return;
-    track.scrollTo({ left: slide.offsetLeft - track.offsetLeft, behavior: "smooth" });
+    const centered = window.innerWidth < 640;
+    const offset = centered ? (track.clientWidth - slide.offsetWidth) / 2 : 0;
+    track.scrollTo({
+      left: slide.offsetLeft - track.offsetLeft - offset,
+      behavior: "smooth",
+    });
   };
 
   // Setas andam um slide a partir da posição atual da rolagem. Antes elas
@@ -53,6 +64,22 @@ export function Carousel({ items }: { items: Item[] }) {
     setIndex(best);
   }, [items.length]);
 
+  // Passa para o próximo depoimento quando o preenchimento do ponto termina.
+  const advance = () => {
+    const next = index + 1 < items.length ? index + 1 : 0;
+    goTo(next);
+  };
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {
+      threshold: 0.5,
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     update();
     window.addEventListener("resize", update);
@@ -60,18 +87,26 @@ export function Carousel({ items }: { items: Item[] }) {
   }, [update]);
 
   return (
-    <div>
+    <div
+      ref={rootRef}
+      onPointerEnter={(e) => e.pointerType === "mouse" && setInteracting(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setInteracting(false)}
+      onTouchStart={() => setInteracting(true)}
+      onTouchEnd={() => setInteracting(false)}
+      onFocus={(e) => e.target.matches(":focus-visible") && setInteracting(true)}
+      onBlur={() => setInteracting(false)}
+    >
       <div
         ref={trackRef}
         onScroll={update}
-        className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:px-0"
+        className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[9vw] pb-2 sm:px-5 md:mx-0 md:px-0"
         tabIndex={0}
         aria-label="Depoimentos de mães"
       >
         {items.map((it) => (
           <figure
             key={it.src}
-            className="w-[82%] shrink-0 snap-start sm:w-[340px]"
+            className="w-[82vw] shrink-0 snap-center sm:w-[340px] sm:snap-start"
           >
             <blockquote className="display mb-3 text-[20px] leading-snug text-dark">
               “{it.quote}”
@@ -104,10 +139,19 @@ export function Carousel({ items }: { items: Item[] }) {
               type="button"
               onClick={() => goTo(i)}
               aria-label={`Ir para o depoimento ${i + 1}`}
-              className={`h-2 rounded-full transition-all ${
-                i === index ? "w-6 bg-dark" : "w-2 bg-line"
+              className={`relative h-2 overflow-hidden rounded-full bg-line transition-all duration-300 ${
+                i === index ? "w-10" : "w-2"
               }`}
-            />
+            >
+              {i === index ? (
+                <span
+                  key={index}
+                  onAnimationEnd={advance}
+                  className="carousel-fill absolute inset-0 rounded-full bg-dark"
+                  style={{ animationPlayState: paused ? "paused" : "running" }}
+                />
+              ) : null}
+            </button>
           ))}
         </div>
         <button

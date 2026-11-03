@@ -205,3 +205,25 @@ details[open] .faq-chevron {
     transition: none;
   }
 }
+
+/* Preenchimento do ponto ativo do carrossel (5 s por depoimento). */
+@keyframes carousel-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.carousel-fill {
+  transform-origin: left;
+  animation: carousel-fill 5s linear forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fill {
+    animation: none;
+    transform: none;
+  }
+}

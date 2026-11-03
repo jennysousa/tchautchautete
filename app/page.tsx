@@ -222,33 +222,35 @@ export default function Home() {
       <section className="container-lp pt-5 md:pt-8">
         <div className="grid items-center gap-8 rounded-[19px] bg-bg-alt px-6 py-10 md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:px-14 md:py-14">
           <Reveal>
-            <p className="eyebrow mb-4">Tchau, tchau, tetê</p>
+            <p className="eyebrow mb-4">Bem-vinda ao Tchau, tchau, tetê</p>
             <h1 className="text-[32px] font-medium leading-[1.12] text-ink md:text-[46px]">
-              Desmamar com{" "}
-              <span className="display text-[38px] text-accent-1 md:text-[54px]">carinho</span> é
-              possível, e o vínculo de vocês continua inteiro.
+              <span className="display text-[38px] text-accent-1 md:text-[54px]">
+                Desmamar com carinho
+              </span>{" "}
+              é possível, e o{" "}
+              <span className="display text-[38px] text-dark md:text-[54px]">vínculo</span> de
+              vocês continua inteiro.
             </h1>
             <p className="mt-5 max-w-[34rem] text-[15px] leading-relaxed text-muted md:text-[16px]">
               Vou te guiar por um caminho em fases, no ritmo do seu filho. Você escolhe até onde ir,
               do desmame noturno ao desmame total.
             </p>
             <div className="mt-7">
-              <Cta
+              <Cta position="hero" href="#oferta"
                 label="Quero começar"
-                micro="Acesso imediato e garantia de 7 dias"
                 center={false}
               />
             </div>
           </Reveal>
-          <Reveal delay={120} className="order-first md:order-last">
-            <div className="float-soft mx-auto max-w-[420px] overflow-hidden rounded-[19px] bg-[#fdeaf3]">
+          <Reveal delay={120}>
+            <div className="float-soft mx-auto aspect-[4/5] max-w-[340px] overflow-hidden rounded-[19px] bg-[#fdeaf3] md:max-w-[460px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={asset("/img/mae-bebe.jpg")}
-                alt="Mãe sorrindo enquanto amamenta o bebê no colo"
-                width={1852}
-                height={1704}
-                className="h-auto w-full"
+                src={asset("/img/duda-hero.jpg")}
+                alt="Duda Bertocco, psicóloga e consultora de amamentação, com a mão no queixo e olhar acolhedor"
+                width={1400}
+                height={1516}
+                className="h-full w-full object-cover object-top"
               />
             </div>
           </Reveal>
@@ -258,7 +260,19 @@ export default function Home() {
       {/* 2. Lead */}
       <section className="section-lp">
         <div className="container-lp">
-          <Reveal className="mx-auto max-w-[640px]">
+          <Reveal className="mx-auto grid max-w-[640px] items-center gap-8 md:max-w-[980px] md:grid-cols-[1fr_0.75fr] md:gap-12">
+            <div className="order-last mx-auto aspect-[5/4] w-full max-w-[340px] overflow-hidden rounded-[19px] md:aspect-[4/5] md:max-w-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset("/img/mae-filha-coruja.jpg")}
+                alt="Mãe sentada no chão acaricia a cabeça da filha pequena, deitada com um bichinho de pelúcia"
+                width={933}
+                height={1400}
+                loading="lazy"
+                className="h-full w-full object-cover [object-position:50%_52%]"
+              />
+            </div>
+            <div>
             <p className="display text-[25px] leading-snug text-dark md:text-[30px]">
               Pense no dia em que o seu filho vai dormir sem o peito e, de manhã, corre para o seu
               colo mesmo assim.
@@ -282,6 +296,7 @@ export default function Home() {
                 vínculo. Ele ganha um lugar novo para morar.
               </p>
             </div>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -297,6 +312,24 @@ export default function Home() {
               Três fases, cada uma com pequenas conquistas, para você sentir o avanço e saber sempre
               qual é o próximo passo.
             </p>
+            {/* Tablet em CSS, na horizontal, com a tela do curso dentro */}
+            <div className="relative mx-auto mb-10 w-full max-w-[760px] rounded-[22px] bg-[#1c1c1f] p-[10px] shadow-[0_24px_50px_-12px_rgba(0,0,0,0.35),inset_0_0_0_1.5px_rgba(255,255,255,0.12)] sm:rounded-[34px] sm:p-[18px] md:p-[22px]">
+              <span
+                aria-hidden="true"
+                className="absolute left-[3px] top-1/2 hidden h-[6px] w-[6px] -translate-y-1/2 rounded-full bg-[#34343a] sm:left-[6px] sm:block sm:h-[8px] sm:w-[8px] md:left-[7px]"
+              />
+              <div className="overflow-hidden rounded-[10px] bg-black sm:rounded-[14px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={asset("/img/mockup-aulas.png")}
+                  alt="Área de aulas do curso, com a Duda explicando os sinais de prontidão para o desmame e a lista de aulas ao lado"
+                  width={1075}
+                  height={706}
+                  loading="lazy"
+                  className="block h-auto w-full"
+                />
+              </div>
+            </div>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-3">
             {fases.map((f, i) => (
@@ -318,7 +351,7 @@ export default function Home() {
             ))}
           </div>
           <Reveal className="mt-10">
-            <Cta label="Quero o Método ABC" micro="Passo a passo, no ritmo do seu filho" />
+            <Cta position="metodo" label="Quero o Método ABC" />
           </Reveal>
         </div>
       </section>
@@ -355,8 +388,8 @@ export default function Home() {
                       <span aria-hidden="true" className="text-dark">
                         ✕
                       </span>
-                      Seu filho ainda não completou 14 meses. Você pode começar quando ele chegar
-                      nessa idade, e o acesso dura 2 anos.
+                      Seu filho ainda não completou 14 meses. Você pode começar a partir dessa
+                      idade, e o acesso dura 2 anos.
                     </li>
                   </ul>
                 </div>
@@ -373,7 +406,7 @@ export default function Home() {
             </Reveal>
           </div>
           <Reveal className="mt-10">
-            <Cta label="Quero esse caminho" micro="Acesso imediato" />
+            <Cta position="caminho" label="Quero esse caminho" />
           </Reveal>
         </div>
       </section>
@@ -413,7 +446,7 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal className="mt-10">
-            <Cta label="Quero entrar agora" micro="2 anos de acesso" />
+            <Cta position="conteudo" label="Quero entrar agora" />
           </Reveal>
         </div>
       </section>
@@ -425,8 +458,10 @@ export default function Home() {
             <Reveal className="mx-auto w-full max-w-[340px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={asset("/img/duda.jpg")}
+                src={asset("/img/duda-apresentacao.jpg")}
                 alt="Duda Bertocco, psicóloga e consultora de amamentação"
+                width={900}
+                height={900}
                 loading="lazy"
                 className="h-auto w-full rounded-[8px]"
               />
@@ -460,7 +495,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="mt-7">
-                <Cta label="Começar com a Duda" micro="Garantia de 7 dias" center={false} />
+                <Cta position="duda" label="Começar com a Duda" center={false} />
               </div>
             </Reveal>
           </div>
@@ -482,7 +517,7 @@ export default function Home() {
             <Carousel items={depoimentos} />
           </Reveal>
           <Reveal className="mt-10">
-            <Cta label="Quero começar" micro="Acesso imediato e garantia de 7 dias" />
+            <Cta position="depoimentos" label="Quero começar" />
           </Reveal>
         </div>
       </section>
@@ -521,7 +556,7 @@ export default function Home() {
                   </p>
                   <p className="mt-2 text-[14px] text-white/85">ou R$147 à vista</p>
                   <div className="mt-6">
-                    <Cta label="Garantir meu acesso" micro="Garantia de 7 dias" tone="dark" />
+                    <Cta position="oferta" label="Garantir meu acesso" tone="dark" />
                   </div>
                 </div>
               </div>
@@ -529,7 +564,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="mt-8">
-            <div className="mx-auto flex max-w-[720px] flex-col items-center gap-5 rounded-[19px] border border-line bg-white p-6 text-center md:flex-row md:text-left md:p-8">
+            <div className="mx-auto flex max-w-[720px] flex-col items-center gap-5 px-2 text-center md:flex-row md:text-left">
               <Roseta />
               <div>
                 <h3 className="text-[19px] font-bold text-ink">
@@ -538,13 +573,37 @@ export default function Home() {
                 <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
                   Entre no curso, assista às aulas e veja se faz sentido para você e para o seu
                   filho. Se nesses 7 dias você sentir que não é o caminho, é só pedir o reembolso
-                  pela Hotmart e eu devolvo o valor.
+                  pela Hotmart e o seu valor inteiro é devolvido.
                 </p>
               </div>
             </div>
           </Reveal>
+
+          <Reveal className="mt-8">
+            <Cta position="garantia" label="Quero esse caminho" />
+          </Reveal>
         </div>
       </section>
+
+      {/* Foto que liga a garantia às perguntas, metade em cada fundo */}
+      <div className="relative">
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-bg-alt" />
+        <div className="container-lp relative">
+          <Reveal>
+            <div className="mx-auto max-w-[380px] overflow-hidden rounded-[19px] bg-[#fdeaf3] shadow-[0_14px_34px_-14px_rgba(0,0,0,0.25)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset("/img/mae-bebe.jpg")}
+                alt="Mãe sorrindo enquanto amamenta o bebê no colo"
+                width={1852}
+                height={1704}
+                loading="lazy"
+                className="h-auto w-full"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </div>
 
       {/* 9. Perguntas frequentes */}
       <section className="section-lp bg-bg-alt">
@@ -556,7 +615,7 @@ export default function Home() {
             <Faq items={perguntas} />
           </Reveal>
           <Reveal className="mt-10">
-            <Cta label="Quero começar" micro="Acesso imediato e garantia de 7 dias" />
+            <Cta position="faq" label="Quero começar" />
           </Reveal>
         </div>
       </section>
@@ -600,9 +659,8 @@ export default function Home() {
                 <p className="mt-6 font-bold text-ink">Duda Bertocco</p>
                 <p className="text-[13px] text-muted">Psicóloga e consultora de amamentação</p>
                 <div className="mt-7">
-                  <Cta
+                  <Cta position="final"
                     label="Quero começar"
-                    micro="12x de R$15,20 ou R$147 à vista. Garantia de 7 dias."
                     center={false}
                   />
                 </div>
