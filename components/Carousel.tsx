@@ -108,9 +108,6 @@ export function Carousel({ items }: { items: Item[] }) {
             key={it.src}
             className="w-[82vw] shrink-0 snap-center sm:w-[340px] sm:snap-start"
           >
-            <blockquote className="display mb-3 text-[20px] leading-snug text-dark">
-              “{it.quote}”
-            </blockquote>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={it.src}

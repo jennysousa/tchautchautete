@@ -64,7 +64,7 @@ const fases = [
     itens: [
       "Você escolhe as mamadas que ficam.",
       "Cada mamada ganha um momento certo da rotina.",
-      "Vocês montam juntos o quadro do tetê.",
+      "Vocês montam juntos o quadro do tetê, uma cartolina com fotos dos momentos em que ele pode mamar.",
       "A técnica do adiamento e a da distração entram em ação.",
       "O dia passa a ter ritmo, sem pedido o tempo todo.",
     ],
@@ -79,7 +79,7 @@ const fases = [
       "Vocês decidem juntos os rumos da noite.",
       "Ele aprende a diferença entre sol e lua.",
       "O quadro de dia e noite entra na rotina.",
-      "A corujinha acompanha cada despertar.",
+      "A corujinha, um copo só com água para a noite, acompanha cada despertar.",
       "Você começa com um plano claro para a madrugada.",
     ],
   },
@@ -93,7 +93,7 @@ const fases = [
       "Você descobre a ordem certa das mamadas que saem.",
       "A rotina se ajusta para cada despedida.",
       "Uma mamada sai de cada vez.",
-      "O calendário de despedida mostra a data.",
+      "O calendário de despedida conta os dias até a última mamada.",
       "A festinha de despedida fecha o ciclo e deixa uma memória linda.",
     ],
   },
@@ -122,7 +122,7 @@ const modulos = [
   },
   {
     n: "02",
-    t: "Fase A: Regulamentação de demanda",
+    t: "Fase A: Organizar as mamadas do dia",
     d: "Como escolher as mamadas que ficam, ligar cada uma a um momento da rotina e montar o quadro do tetê junto com o seu filho. Com a técnica do adiamento e a da distração, para os momentos em que ele pedir fora de hora.",
   },
   {
@@ -138,7 +138,7 @@ const modulos = [
 ];
 
 const extras = [
-  "Dúvidas das alunas, com as perguntas mais comuns respondidas pela Duda.",
+  "Aula de dúvidas comuns, com as perguntas mais frequentes respondidas pela Duda.",
   "Material de apoio em slides, com o resumo visual de cada fase, indicações de livros e de brinquedos.",
   "Grupo de apoio exclusivo no WhatsApp.",
   "2 anos de acesso, para rever as aulas sempre que precisar.",
@@ -170,7 +170,7 @@ const depoimentos = [
 const oferta = [
   "Método ABC do desmame, em 4 módulos de aulas gravadas",
   "Quadro do tetê, corujinha, calendário de despedida e as outras ferramentas, passo a passo",
-  "Respostas da Duda para as dúvidas mais comuns das alunas",
+  "Aula de dúvidas comuns, respondidas pela Duda",
   "Material de apoio em slides",
   "Grupo de apoio exclusivo no WhatsApp",
   "2 anos de acesso, para rever quando precisar",
@@ -207,7 +207,7 @@ const perguntas = [
   },
   {
     q: "Como tiro minhas dúvidas?",
-    a: "Você terá acesso a um grupo de apoio exclusivo no WhatsApp.",
+    a: "No grupo de apoio exclusivo no WhatsApp, a Duda responde às dúvidas, e outras mães compartilham seus relatos.",
   },
   {
     q: "E se eu não gostar?",
@@ -278,14 +278,14 @@ export default function Home() {
               colo mesmo assim.
             </p>
             <div className="mt-7 space-y-5 text-[15px] leading-relaxed text-ink/90 md:text-[16px]">
-              <p>Esse dia existe. E quase sempre ele chega mais perto do que a mãe imagina.</p>
+              <p>Esse dia existe. E quase sempre ele chega mais rápido do que a mãe imagina.</p>
               <p>
-                O que atrasa tudo isso é uma dúvida que quase toda mãe me faz, de um jeito ou de
+                O que atrasa esse dia é uma dúvida que quase toda mãe me faz, de um jeito ou de
                 outro. “Se eu tirar o peito, a gente se afasta?”
               </p>
               <p>
                 O problema nunca foi o desmame. Foi a ordem em que ele costuma ser feito. Muita
-                gente começa pelo fim, e é natural, porque é o que costuma ser ensinado.
+                gente começa tirando o peito de vez, e é natural, porque é o que costuma ser ensinado.
               </p>
               <p>
                 No Tchau, tchau, tetê eu faço ao contrário. O seu filho aprende a se sentir seguro
@@ -293,7 +293,7 @@ export default function Home() {
               </p>
               <p className="font-medium text-ink">
                 Por isso o desmame deixa de ser uma despedida e vira uma mudança. Vocês não perdem o
-                vínculo. Ele ganha um lugar novo para morar.
+                vínculo. O vínculo ganha um lugar novo para morar.
               </p>
             </div>
             </div>
@@ -388,8 +388,8 @@ export default function Home() {
                       <span aria-hidden="true" className="text-dark">
                         ✕
                       </span>
-                      Seu filho ainda não completou 14 meses. Você pode começar a partir dessa
-                      idade, e o acesso dura 2 anos.
+                      Seu filho ainda não completou 14 meses. O curso é indicado a partir dessa
+                      idade.
                     </li>
                   </ul>
                 </div>
